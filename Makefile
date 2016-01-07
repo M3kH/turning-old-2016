@@ -42,8 +42,6 @@ build: docker-compose.yml
 	docker-compose run static-transformer build
 
 publish-gh-pages: docker-compose.yml
-	@git config user.name "Travis CI" && \
-	git config user.email "info@ideabile.com" && \
 	git branch -D gh-pages 2>/dev/null || true && \
 	git branch -D draft 2>/dev/null || true && \
 	git checkout -b draft && \
@@ -51,7 +49,7 @@ publish-gh-pages: docker-compose.yml
 	git add -f www && \
 	git commit -am "Deploy on gh-pages" && \
 	git subtree split --prefix www -b gh-pages && \
-	git push --force "https://${GH_TOKEN}@${GH_REF}.git" gh-pages:gh-pages > /dev/null 2>&1
+	git push --force origin gh-pages > /dev/null 2>&1
 
 stop: docker-compose.yml
 	@docker-compose kill && \
