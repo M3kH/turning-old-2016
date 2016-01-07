@@ -8,7 +8,8 @@
           $p.hide(),
           _paragraphs = [],
           start = function(){
-            _paragraphs.shift()(function(){
+            var next = _paragraphs.shift();
+            if(next) next(function(){
               _paragraphs.sort(function() {return 0.5 - Math.random()});
               start();
             });
