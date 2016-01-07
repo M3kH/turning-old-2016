@@ -1,0 +1,6 @@
+{
+  "title": "Monera",
+  "description": "A Docker based Kingdom for Web Artisans",
+  "url": "http://localhost:3000/",
+  "layout": "default"
+}

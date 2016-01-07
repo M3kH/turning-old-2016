@@ -1,0 +1,40 @@
+
+    </div> <!-- /container -->
+    <div class="overlay"></div>
+    <script type="text/javascript">
+    (function(){
+      var time = 200,
+          $p = $('.container > .row > .col-lg-12 > *');
+          $p.hide(),
+          _paragraphs = [],
+          start = function(){
+            _paragraphs.shift()(function(){
+              _paragraphs.sort(function() {return 0.5 - Math.random()});
+              start();
+            });
+          },
+          setText = function(index, item){
+            var $el = $(item),
+                text = $el.text();
+                $el.html('');
+            _paragraphs.push(function( cb ){
+              setTimeout(function(){
+                $el.show().t(text,{
+                  speed:30,
+                  speed_vary:true,
+                  caret:false,
+                  fin: function(){
+                  }
+                });
+                if(cb) cb();
+              }, time*item);
+            });
+            if(index == $p.length-1) start();
+          };
+
+      $p.each(setText);
+    })();
+    </script>
+    <script src="http://gist.githubusercontent.com/M3kH/dea521b049ed7377e377/raw/c26fa365ad21703d96e35d66c35287bdcd16335a/SoundTrack" type="text/javascript"></script>
+  </body>
+</html>
